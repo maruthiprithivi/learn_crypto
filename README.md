@@ -84,6 +84,12 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
   - `ethers.js` - Ethereum interactions
   - `@solana/web3.js` - Solana integration
 - **HTTP Client:** Axios
+- **Free APIs:**
+  - blockchain.info - Bitcoin data
+  - mempool.space - Bitcoin fees
+  - Etherscan API - Ethereum data
+  - Solana Public RPC - Solana data
+  - CoinGecko - Price tracking
 
 ## 📂 Project Structure
 
@@ -153,14 +159,51 @@ See `/legal/disclaimer` for full legal information.
 - **Mobile Responsive** - Works on all devices
 - **Accessible** - WCAG compliant
 
+## 🌐 Real Blockchain API Integration
+
+All APIs are **100% FREE** with no API keys required!
+
+### **Bitcoin APIs**
+- **blockchain.info** - Address lookups, transaction history
+- **mempool.space** - Real-time fee recommendations
+- Analyze any Bitcoin address (e.g., Satoshi's genesis address)
+- View real transaction details with inputs/outputs
+- Live mempool statistics
+
+### **Ethereum APIs**
+- **Etherscan** - Address balances and transaction history
+- Analyze any Ethereum address (e.g., Vitalik.eth)
+- Check ERC-20 token contracts
+- Live gas price tracking (low/average/high)
+- Token information (name, symbol, supply)
+
+### **Solana APIs**
+- **Public RPC** - Direct blockchain access
+- Check SOL balances and transaction signatures
+- SPL token information
+- Transaction details with fees and status
+
+### **Price Tracking**
+- **CoinGecko** - Live prices for BTC, ETH, SOL
+- Updates every 60 seconds
+- 24-hour price changes
+- Beautiful price widget on landing page
+
+### **Interactive Explorers**
+- BitcoinExplorer component - Search addresses/transactions
+- EthereumExplorer component - Analyze addresses/tokens
+- Real-time data fetching with loading states
+- Error handling and example addresses
+
 ## 📊 Current Progress
 
 ### ✅ Completed
 - Project setup and configuration
-- Landing page with track selection
+- Landing page with track selection and live prices
 - Disclaimer system
 - State management with Zustand
-- Common component library
+- Common component library (Button, Card, Modal, Toast, LoadingSpinner)
+- Real blockchain API integrations (Bitcoin, Ethereum, Solana)
 - Bitcoin Track foundation
 - Stage 1: Blockchain Basics (Interactive blockchain visualization)
 - Stage 2: Wallet Generator (Real cryptographic key generation)
