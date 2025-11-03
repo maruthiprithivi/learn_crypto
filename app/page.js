@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Card from '@/components/common/Card'
 import Button from '@/components/common/Button'
 import DisclaimerModal from '@/components/common/DisclaimerModal'
+import PriceWidget from '@/components/common/PriceWidget'
 import { useAppStore } from '@/lib/store'
 
 export default function Home() {
@@ -145,6 +146,11 @@ export default function Home() {
                 </Link>
               </p>
             </div>
+          </div>
+
+          {/* Live Prices */}
+          <div className="mb-12 max-w-4xl mx-auto">
+            <PriceWidget />
           </div>
 
           {/* Feature Highlights */}
