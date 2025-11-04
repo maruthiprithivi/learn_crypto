@@ -4,6 +4,7 @@ import { useState } from 'react'
 import StageLayout from '@/components/common/StageLayout'
 import Card from '@/components/common/Card'
 import Button from '@/components/common/Button'
+import BitcoinExplorer from '@/components/interactive/BitcoinExplorer'
 
 export default function BitcoinStage4() {
   const [walletBalance] = useState(1.5) // BTC
@@ -398,6 +399,18 @@ export default function BitcoinStage4() {
         </div>
       </Card>
 
+      {/* Real Blockchain Explorer */}
+      <Card className="mb-8">
+        <div className="flex items-center gap-3 mb-4">
+          <span className="text-3xl">🔍</span>
+          <div>
+            <h3 className="text-xl font-bold text-white">Explore Real Bitcoin Transactions</h3>
+            <p className="text-sm text-gray-400">Look up real addresses and transactions on the Bitcoin blockchain</p>
+          </div>
+        </div>
+        <BitcoinExplorer />
+      </Card>
+
       {/* Key Learnings */}
       <Card className="bg-blue-500/10 border-blue-500/50">
         <h3 className="text-xl font-bold text-white mb-4">🎓 Key Learnings</h3>
@@ -421,6 +434,10 @@ export default function BitcoinStage4() {
           <li className="flex items-start gap-3">
             <span className="text-blue-400 mt-1">✓</span>
             <span>Always double-check the recipient address before sending</span>
+          </li>
+          <li className="flex items-start gap-3">
+            <span className="text-blue-400 mt-1">✓</span>
+            <span>You can explore real transactions on the Bitcoin blockchain using the explorer above</span>
           </li>
         </ul>
       </Card>

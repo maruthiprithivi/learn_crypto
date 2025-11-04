@@ -4,6 +4,7 @@ import { useState } from 'react'
 import StageLayout from '@/components/common/StageLayout'
 import Card from '@/components/common/Card'
 import Button from '@/components/common/Button'
+import EthereumExplorer from '@/components/interactive/EthereumExplorer'
 
 export default function EthereumStage3() {
   const [gasPrice, setGasPrice] = useState(50)
@@ -147,6 +148,17 @@ export default function EthereumStage3() {
         </div>
       </Card>
 
+      <Card className="mb-8">
+        <div className="flex items-center gap-3 mb-4">
+          <span className="text-3xl">🔎</span>
+          <div>
+            <h3 className="text-xl font-bold text-white">Check Live Gas Prices & Explore Addresses</h3>
+            <p className="text-sm text-gray-400">View current network gas prices and explore Ethereum addresses</p>
+          </div>
+        </div>
+        <EthereumExplorer />
+      </Card>
+
       <Card className="bg-blue-500/10 border-blue-500/50">
         <h3 className="text-xl font-bold text-white mb-4">🎓 Key Learnings</h3>
         <ul className="space-y-3 text-gray-300">
@@ -169,6 +181,10 @@ export default function EthereumStage3() {
           <li className="flex items-start gap-3">
             <span className="text-blue-400 mt-1">✓</span>
             <span>Layer 2 solutions offer much cheaper alternatives</span>
+          </li>
+          <li className="flex items-start gap-3">
+            <span className="text-blue-400 mt-1">✓</span>
+            <span>You can check live gas prices and explore addresses using the blockchain explorer above</span>
           </li>
         </ul>
       </Card>

@@ -6,6 +6,7 @@ import Card from '@/components/common/Card'
 import Button from '@/components/common/Button'
 import { getERC20TokenInfo } from '@/lib/api/ethereum-api'
 import LoadingSpinner from '@/components/common/LoadingSpinner'
+import EthereumExplorer from '@/components/interactive/EthereumExplorer'
 
 export default function EthereumStage4() {
   const [selectedToken, setSelectedToken] = useState(null)
@@ -216,6 +217,17 @@ export default function EthereumStage4() {
         </div>
       </Card>
 
+      <Card className="mb-8">
+        <div className="flex items-center gap-3 mb-4">
+          <span className="text-3xl">🔎</span>
+          <div>
+            <h3 className="text-xl font-bold text-white">Explore More Tokens & Addresses</h3>
+            <p className="text-sm text-gray-400">Look up any Ethereum address or ERC-20 token contract on the blockchain</p>
+          </div>
+        </div>
+        <EthereumExplorer />
+      </Card>
+
       <Card className="bg-blue-500/10 border-blue-500/50">
         <h3 className="text-xl font-bold text-white mb-4">🎓 Key Learnings</h3>
         <ul className="space-y-3 text-gray-300">
@@ -234,6 +246,10 @@ export default function EthereumStage4() {
           <li className="flex items-start gap-3">
             <span className="text-blue-400 mt-1">✓</span>
             <span>You explored real tokens like USDC, LINK, and UNI on the Ethereum blockchain</span>
+          </li>
+          <li className="flex items-start gap-3">
+            <span className="text-blue-400 mt-1">✓</span>
+            <span>You can explore any Ethereum address or token contract using the blockchain explorer above</span>
           </li>
         </ul>
       </Card>
