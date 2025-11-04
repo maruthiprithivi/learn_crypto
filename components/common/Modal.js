@@ -11,6 +11,7 @@ export default function Modal({
   closeOnOverlay = true,
   showCloseButton = true,
   size = 'md',
+  onScroll,
 }) {
   useEffect(() => {
     if (isOpen) {
@@ -73,7 +74,7 @@ export default function Modal({
         )}
 
         {/* Body */}
-        <div className="p-6 max-h-[60vh] overflow-y-auto">
+        <div className="p-6 max-h-[60vh] overflow-y-auto" onScroll={onScroll}>
           {children}
         </div>
 

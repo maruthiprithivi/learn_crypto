@@ -28,6 +28,7 @@ export default function DisclaimerModal() {
       size="lg"
       closeOnOverlay={false}
       showCloseButton={false}
+      onScroll={handleScroll}
       footer={
         <div className="flex flex-col sm:flex-row gap-4 justify-end">
           <Button
@@ -42,11 +43,7 @@ export default function DisclaimerModal() {
         </div>
       }
     >
-      <div
-        className="space-y-6 text-gray-300 pr-2"
-        onScroll={handleScroll}
-        style={{ maxHeight: '50vh', overflowY: 'auto' }}
-      >
+      <div className="space-y-6 text-gray-300">
         <div className="bg-red-500/10 border border-red-500/50 rounded-lg p-4">
           <p className="text-red-400 font-semibold text-lg">
             This platform is for EDUCATIONAL PURPOSES ONLY.
