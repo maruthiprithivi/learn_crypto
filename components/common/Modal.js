@@ -42,10 +42,10 @@ export default function Modal({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fade-in"
+      className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black animate-fade-in overflow-y-auto"
       onClick={handleOverlayClick}
     >
-      <div className={`bg-gray-900 border border-gray-700 rounded-2xl shadow-2xl w-full ${sizes[size]} animate-slide-up`}>
+      <div className={`bg-gray-900 border border-gray-700 rounded-2xl shadow-2xl w-full ${sizes[size]} my-8 animate-slide-up`}>
         {/* Header */}
         {title && (
           <div className="flex items-center justify-between p-6 border-b border-gray-700">
@@ -74,7 +74,7 @@ export default function Modal({
         )}
 
         {/* Body */}
-        <div className="p-6 max-h-[60vh] overflow-y-auto" onScroll={onScroll}>
+        <div className="p-6 max-h-[50vh] overflow-y-auto" onScroll={onScroll}>
           {children}
         </div>
 
