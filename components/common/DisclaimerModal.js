@@ -1,20 +1,19 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Modal from './Modal'
 import Button from './Button'
 import { useAppStore } from '@/lib/store'
 
 export default function DisclaimerModal() {
   const { hasAcceptedDisclaimer, acceptDisclaimer } = useAppStore()
-  const [hasScrolledToBottom, setHasScrolledToBottom] = useState(false)
+  const [canAccept, setCanAccept] = useState(false)
 
-  const handleScroll = (e) => {
-    const { scrollTop, scrollHeight, clientHeight } = e.target
-    if (scrollTop + clientHeight >= scrollHeight - 10) {
-      setHasScrolledToBottom(true)
-    }
-  }
+  useEffect(() => {
+    // Auto-enable accept button after 3 seconds
+    const timer = setTimeout(() => setCanAccept(true), 3000)
+    return () => clearTimeout(timer)
+  }, [])
 
   const handleAccept = () => {
     acceptDisclaimer()
@@ -24,134 +23,56 @@ export default function DisclaimerModal() {
     <Modal
       isOpen={!hasAcceptedDisclaimer}
       onClose={() => {}}
-      title="⚠️ IMPORTANT DISCLAIMER"
-      size="lg"
+      title=""
+      size="md"
       closeOnOverlay={false}
       showCloseButton={false}
-      onScroll={handleScroll}
       footer={
-        <div className="flex flex-col sm:flex-row gap-4 justify-end">
+        <div className="flex flex-col gap-3">
           <Button
             onClick={handleAccept}
             variant="primary"
             size="lg"
-            disabled={!hasScrolledToBottom}
-            className="w-full sm:w-auto"
+            disabled={!canAccept}
+            className="w-full"
           >
-            {hasScrolledToBottom ? 'I Understand & Accept' : 'Please Scroll to Continue'}
+            {canAccept ? 'I Understand - Start Learning' : 'Please Read (3s)'}
           </Button>
+          <p className="text-xs text-center text-gray-500">
+            By clicking above, you acknowledge this is for educational purposes only
+          </p>
         </div>
       }
     >
-      <div className="space-y-6 text-gray-300">
-        <div className="bg-red-500/10 border border-red-500/50 rounded-lg p-4">
-          <p className="text-red-400 font-semibold text-lg">
-            This platform is for EDUCATIONAL PURPOSES ONLY.
-          </p>
-        </div>
+      <div className="text-center space-y-6">
+        <div className="text-6xl mb-4">🎓</div>
 
-        <div className="space-y-4">
-          <h3 className="text-xl font-bold text-white">What This Platform Is:</h3>
-          <ul className="space-y-2 list-none">
-            <li className="flex items-start">
-              <span className="text-green-400 mr-2">✓</span>
-              <span>An interactive educational platform to learn cryptocurrency concepts</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-green-400 mr-2">✓</span>
-              <span>A safe environment to practice with simulated wallets and transactions</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-green-400 mr-2">✓</span>
-              <span>A tool to understand blockchain technology and crypto markets</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-green-400 mr-2">✓</span>
-              <span>A resource for learning how to analyze and evaluate crypto projects</span>
-            </li>
+        <h2 className="text-3xl font-bold text-white">
+          Welcome to CryptoLearn
+        </h2>
+
+        <p className="text-xl text-gray-300">
+          Interactive Crypto Education Platform
+        </p>
+
+        <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-xl p-6 text-left">
+          <h3 className="text-lg font-bold text-yellow-400 mb-3 text-center">Quick Disclaimer</h3>
+          <ul className="space-y-2 text-sm text-gray-300">
+            <li>✓ This is for <strong>education only</strong> - not financial advice</li>
+            <li>✓ Practice with <strong>simulations</strong> before risking real money</li>
+            <li>✓ Crypto is <strong>extremely risky</strong> - never invest more than you can lose</li>
+            <li>✓ You're <strong>responsible</strong> for your own investment decisions</li>
           </ul>
         </div>
 
-        <div className="space-y-4">
-          <h3 className="text-xl font-bold text-white">What This Platform Is NOT:</h3>
-          <ul className="space-y-2 list-none">
-            <li className="flex items-start">
-              <span className="text-red-400 mr-2">✗</span>
-              <span><strong>Financial advice</strong> or investment recommendations</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-red-400 mr-2">✗</span>
-              <span><strong>Investment guidance</strong> on what to buy or sell</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-red-400 mr-2">✗</span>
-              <span><strong>A guarantee</strong> of profit or success in trading</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-red-400 mr-2">✗</span>
-              <span><strong>Professional financial counsel</strong> - always consult licensed advisors</span>
-            </li>
-          </ul>
-        </div>
-
-        <div className="bg-yellow-500/10 border border-yellow-500/50 rounded-lg p-4 space-y-3">
-          <h3 className="text-xl font-bold text-yellow-400">Critical Warnings:</h3>
-          <ul className="space-y-2 text-sm">
-            <li>🔸 <strong>High Risk:</strong> Cryptocurrency investments are extremely volatile and risky</li>
-            <li>🔸 <strong>Your Responsibility:</strong> All investment decisions are yours alone</li>
-            <li>🔸 <strong>Can Lose Everything:</strong> Never invest more than you can afford to lose completely</li>
-            <li>🔸 <strong>Do Your Research:</strong> Always conduct thorough independent research (DYOR)</li>
-            <li>🔸 <strong>No Guarantees:</strong> Past performance does not indicate future results</li>
-            <li>🔸 <strong>Scams Exist:</strong> The crypto space has many scams and fraudulent projects</li>
-            <li>🔸 <strong>Regulatory Risk:</strong> Regulations vary by country and can change</li>
-            <li>🔸 <strong>Technical Risk:</strong> Smart contracts can have bugs; exchanges can be hacked</li>
-          </ul>
-        </div>
-
-        <div className="bg-blue-500/10 border border-blue-500/50 rounded-lg p-4">
-          <h3 className="text-lg font-bold text-blue-400 mb-2">Analysis Tools Disclaimer:</h3>
-          <p className="text-sm">
-            When you use our real blockchain analysis tools (contract scanners, rug pull detectors, etc.):
-          </p>
-          <ul className="space-y-1 text-sm mt-2">
-            <li>• Tools show common red flags but cannot guarantee safety</li>
-            <li>• Passing all checks does NOT mean a project is safe</li>
-            <li>• Scammers constantly evolve their tactics</li>
-            <li>• Always use multiple verification methods</li>
-            <li>• Trust your instincts - if something seems too good to be true, it probably is</li>
-          </ul>
-        </div>
-
-        <div className="border-t border-gray-700 pt-4">
-          <h3 className="text-lg font-bold text-white mb-2">By Accepting, You Acknowledge:</h3>
-          <ul className="space-y-2 text-sm">
-            <li>✓ You understand this is educational content only</li>
-            <li>✓ You will not consider any information as financial advice</li>
-            <li>✓ You accept full responsibility for your investment decisions</li>
-            <li>✓ You understand the risks involved in cryptocurrency</li>
-            <li>✓ You will conduct your own research before any investment</li>
-            <li>✓ You may lose all money you invest in cryptocurrency</li>
-          </ul>
-        </div>
-
-        <div className="bg-gray-800 rounded-lg p-4 text-center">
-          <p className="text-sm text-gray-400">
-            For more details, see our{' '}
-            <a href="/legal/terms" className="text-purple-400 hover:text-purple-300 underline">
-              Terms of Use
-            </a>
-            {' '}and{' '}
+        <div className="text-gray-400 text-sm">
+          <p>
+            Want full details? Read our{' '}
             <a href="/legal/disclaimer" className="text-purple-400 hover:text-purple-300 underline">
-              Full Disclaimer
+              complete disclaimer
             </a>
           </p>
         </div>
-
-        {!hasScrolledToBottom && (
-          <div className="text-center py-4 text-yellow-400 animate-pulse">
-            ↓ Please scroll down to continue ↓
-          </div>
-        )}
       </div>
     </Modal>
   )
